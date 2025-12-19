@@ -1,0 +1,39 @@
+{
+  "name" : "source to destingation",
+  "jobMode" : "VISUAL",
+  "description" : "",
+  "role" : "arn:aws:iam::992581133663:role/service-role/AWSGlueServiceRole-sour",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-992581133663-eu-north-1/scripts/source to destingation.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-992581133663-eu-north-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "true",
+    "--enable-observability-metrics" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-992581133663-eu-north-1/temporary/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 2,
+  "timeout" : 480,
+  "maxCapacity" : 2.0,
+  "glueVersion" : "5.0",
+  "numberOfWorkers" : 2,
+  "workerType" : "G.1X",
+  "codeGenConfigurationNodes" : "{\"node-1766069553737\":{\"S3DirectTarget\":{\"AutoDataQuality\":{\"EvaluationContext\":\"EvaluateDataQuality_node1766068738612\",\"IsEnabled\":true},\"Compression\":\"none\",\"Format\":\"csv\",\"Inputs\":[\"node-1766068834971\"],\"Name\":\"Amazon S3\",\"NumberTargetPartitions\":\"0\",\"PartitionKeys\":[],\"Path\":\"s3://sourabh2710\",\"SchemaChangePolicy\":{\"EnableUpdateCatalog\":false}}},\"node-1766068834971\":{\"S3CsvSource\":{\"AdditionalOptions\":{\"EnableSamplePath\":false,\"SamplePath\":\"s3://awsgluebucketsoura/firstcsv.csv\"},\"Escaper\":\"\",\"Exclusions\":[],\"Name\":\"Amazon S3\",\"OptimizePerformance\":false,\"OutputSchemas\":[{\"Columns\":[{\"Name\":\"id\",\"Type\":\"string\"},{\"Name\":\"name\",\"Type\":\"string\"}]}],\"Paths\":[\"s3://awsgluebucketsoura/firstcsv.csv\"],\"QuoteChar\":\"quote\",\"Recurse\":true,\"Separator\":\"comma\",\"WithHeader\":true}}}",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "testing",
+    "branch" : "master",
+    "folder" : "awscode"
+  }
+}
